@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Cong Wang" />
+  <title>Install namd</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="github.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Install namd</h1>
+<p class="author">Cong Wang</p>
+<p class="date">04:08:12 PM Aug 22</p>
+</header>
+<ul>
+<li><p>Donwload source code with the <a href="https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=NAMD">link</a>.</p></li>
+<li><p>Unpack <code>namd</code> package: <code>tar xzvf NAMD_x.xx_Source</code></p></li>
+<li><p>Unpack <code>charm</code> package:</p>
+<pre><code>cd NAMD_x.xx_Source
+tar xvf char-x.xx.x
+cd char-x.xx.x</code></pre></li>
+<li><p>Set the path for CUDA Toolkit with the exact path (mine is <code>/usr/local/cuda-10.0</code>): <code>export CUDATOOLKIT_HOME=/usr/local/cuda-10.0</code></p></li>
+<li><p>Build <code>charm</code>: <code>./build charm++ multicore-linux-x86_64   cuda -j16  --with-production</code></p></li>
+<li><p>Check out the <code>notes.txt</code> (Examples givn in the next few bullet points)</p>
+<ul>
+<li><p>Search <code>Compiling NAMD</code></p></li>
+<li><p>Check the extact name of <code>multicore-linux-x86_64*</code> directory. (Mine is <code>multicore-linux-x86_64-cuda</code> after building it with CUDA support. )</p></li>
+<li><p>Test <code>pgm</code> (Mine has the <code>-cuda</code> postfix, which is not mentioned in the <code>notes.txt</code> file.)</p>
+<pre><code>cd multicore-linux-x86_64-cuda/tests/charm++/megatest
+make pgm
+./pgm +p4   (multicore does not support multiple nodes)
+cd ../../../../..</code></pre></li>
+</ul></li>
+<li><p>Return <code>NAMD_x.xx_Source</code> directory</p></li>
+<li><p>Set <code>CHARMBASE = .rootdir/charm-6.10.2</code> in <code>Make.charm</code></p></li>
+<li><p><code>./config Linux-x86_64-g++ --charm-arch multicore-linux-x86_64-cuda</code></p></li>
+<li><p><code>cd Linux-x86_64-g++</code></p></li>
+<li><p><code>make -j16</code></p></li>
+</ul>
+<p><code>namd</code> binary would be built at the end of the compilation.</p>
+<ul>
+<li><p>Copy binaries to your local bin directory (mine is <code>$HOME/.local/bin</code>)</p>
+<pre><code>cp namd2        $HOME/.local/bin/
+cp charmrun     $HOME/.local/bin/
+cp flipbinpdb   $HOME/.local/bin/
+cp flipdcd      $HOME/.local/bin/
+cp psfgen       $HOME/.local/bin/
+cp sortreplicas $HOME/.local/bin/</code></pre></li>
+</ul>
+</body>
+</html>
