@@ -364,3 +364,6 @@ ul.articles {
 footer {
     font-size: 13px;
 }
+.mjx-chtml {
+    font-size: 1.3em ! important;
+}
