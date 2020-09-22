@@ -144,32 +144,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-32"><a href="#cb1-32"></a>        <span class="co"># Flush it asap...</span></span>
 <span id="cb1-33"><a href="#cb1-33"></a>        <span class="va">self</span>.gnuplot.stdin.flush()</span></code></pre></div>
 <h2 id="set-up">Set up</h2>
+<h3 id="easy-way">Easy way</h3>
+<p>This minimal package can be installed using</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">pip</span> install GnuplotPy3 --user</span></code></pre></div>
+<h3 id="hard-way">Hard way</h3>
 <p>To use this Python object, I create a file called GnuplotPy3.py inside the GnuplotPy3 directory as shown below.</p>
 <pre><code>$HOME/code/GnuplotPy3
            ~~~~~~~~~~
                |
                |___ GnuplotPy3.py</code></pre>
 <p>Then I define the environment variable to include the GnuplotPy3 directory.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="bu">export</span> <span class="va">PYTHONPATH=</span><span class="st">&quot;</span><span class="va">$HOME</span><span class="st">/code/GnuplotPy3:</span><span class="va">$PYTHONPATH</span><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="bu">export</span> <span class="va">PYTHONPATH=</span><span class="st">&quot;</span><span class="va">$HOME</span><span class="st">/code/GnuplotPy3:</span><span class="va">$PYTHONPATH</span><span class="st">&quot;</span></span></code></pre></div>
 <h2 id="use-case">Use case</h2>
 <p>Now test the following code in a Python script,</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#!/usr/bin/env python3</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="co"># -*- coding: utf-8 -*-</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="im">import</span> GnuplotPy3</span>
-<span id="cb4-5"><a href="#cb4-5"></a></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co"># Initialize the GnuplotPy3 object...</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>gp <span class="op">=</span> GnuplotPy3.GnuplotPy3()</span>
-<span id="cb4-8"><a href="#cb4-8"></a></span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="co"># Plot a sine wave...</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a>gp(<span class="st">&quot;plot sin(x)&quot;</span>)</span>
-<span id="cb4-11"><a href="#cb4-11"></a><span class="co">#   ~~~~~~~~~~~</span></span>
-<span id="cb4-12"><a href="#cb4-12"></a><span class="co">#        :</span></span>
-<span id="cb4-13"><a href="#cb4-13"></a><span class="co">#        :... a normal Gnuplot command</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="co"># -*- coding: utf-8 -*-</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="im">import</span> GnuplotPy3</span>
+<span id="cb5-5"><a href="#cb5-5"></a></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co"># Initialize the GnuplotPy3 object...</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>gp <span class="op">=</span> GnuplotPy3.GnuplotPy3()</span>
+<span id="cb5-8"><a href="#cb5-8"></a></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co"># Plot a sine wave...</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a>gp(<span class="st">&quot;plot sin(x)&quot;</span>)</span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#   ~~~~~~~~~~~</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#        :</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#        :... a normal Gnuplot command</span></span></code></pre></div>
 <!-- Footer -->
 <footer>
 <p>
-Licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>
+Licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></br>
 </footer>
 </body>
 </html>
