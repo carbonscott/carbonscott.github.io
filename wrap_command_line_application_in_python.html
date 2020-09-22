@@ -107,9 +107,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p class="author">Cong Wang</p>
 <p class="date">05:01:27 PM Sep 17</p>
 </header>
-<p>An excellent off-the-shelf application might not necessarily provide a Python binding, which a user could take advantage of to control the application by writing a Python script. For example, an analysis workflow in my research typically embodies data manipulation by Python and visualization by Gnuplot. There are two problems in this workflow: 1) one data file must be written by Python so that it’s accessable to Gnuplot; 2) two scripts must co-exist for one analysis job. Such experience is thus not seamless. Is there a better way?</p>
+<p>An excellent off-the-shelf application might not necessarily provide a Python binding, which a user could take advantage of to control the application by a Python script. For example, an analysis workflow in my research typically embodies data manipulation by Python and visualization by Gnuplot. Gnuplot is a command line application which is often used to make publication quality figures with commands. There are two problems in this workflow: 1) one data file must be written by Python so that it’s accessable to Gnuplot; 2) two scripts must co-exist for one analysis job. Such experience is thus not smooth. But a Python wrapper for Gnuplot should be a quick solution.</p>
 <h2 id="source-code">Source code</h2>
-<p>A seamless solution is to utilize <code>subprocess</code> module in Python 3. The following script, if visible by <code>$PYTHONPATH</code>, basically creates a Python object that does one job – sending any input argument to Gnuplot.</p>
+<p>A general approach to build a command line application wrapper is to utilize <code>subprocess</code> module in Python 3. The following script, if visible by <code>$PYTHONPATH</code> or installed by <code>pip</code>, basically creates a Python object that does one job – sending any input argument to Gnuplot.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#!/usr/bin/env python3</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co"># -*- coding: utf-8 -*-</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co"># You can name this file `GnuplotPy3.py`</span></span>
@@ -170,6 +170,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-11"><a href="#cb5-11"></a><span class="co">#   ~~~~~~~~~~~</span></span>
 <span id="cb5-12"><a href="#cb5-12"></a><span class="co">#        :</span></span>
 <span id="cb5-13"><a href="#cb5-13"></a><span class="co">#        :... a normal Gnuplot command</span></span></code></pre></div>
+<h2 id="whats-more">What’s more?</h2>
+<p>There are many command line applications used in academia. In the field of structural biology, <code>pymol</code> is an extrordinary molecular viewer that can be controlled by <code>pymol</code> commands. Regarding scripting, despite <code>pymol</code> provides programming interfaces using Python, the syntax is not easy to learn. I would always like to run <code>pymol</code> commands directly in a Python script. So I also made a Python wrapper for <code>pymol</code> in an identical fashion. Like I said, this is a general approach to build a Python wrapper for a command line application. Enjoy!</p>
 <!-- Footer -->
 <footer>
 <p>
