@@ -100,7 +100,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>
 <a href="https://github.com/carbonscott">github</a>
 </li>
-<li><a href="resume.html">resume</a></li>
+<li>
+<a href="resume.html">resume</a>
+</li>
 </ul>
 </div>
 </nav>
@@ -109,16 +111,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p class="author">Cong Wang</p>
 <p class="date">10:36:44 PM Sep 22</p>
 </header>
-<p>The <a href="https://en.wikipedia.org/wiki/Cartesian_coordinate_system#Orientation_and_handedness">right-handed Cartesian coordinate system</a> has been vastly employed in defining laws of physics and math. The horizontal axis is the x-axis, whereas the vertical axis is the y-axis. It is intuitive to apply this coordinate system to an image, as shown in Figure 1. However, this is not the typical image coordinate system.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Cartesian_coordinate_system#Orientation_and_handedness">right-handed Cartesian coordinate system</a> is vastly employed in defining laws of physics and math. The horizontal axis is the x-axis, whereas the vertical axis is the y-axis. It is intuitive to apply this coordinate system to an image, as shown in Figure 1. However, this is not the typical image coordinate system.</p>
 <figure>
 <img src="./figures/figure01-image_coordinates.png" alt="" /><figcaption>Figure 1. Cartesian coordinate system naively applied to represent image</figcaption>
 </figure>
-<p>There are two flavors for an image coordinate system. Both flavors prefer to set the image origin at the <em>top-left</em> corner. The difference is the choice of handedness. The right-handed flavor is equivalent to a <span class="math inline">\(90^\circ\)</span> clockwise rotation of the traditional right-handed Cartesian coordinate system, as depicted in the middle panel of Figure 2. The left-handed flavor is formed by exchanging two axes, as described in the rightmost panel of Figure 2. My personal choice is the right-handed flavor. Because I always consider the first axis to be the x-axis, which is consistent with the matrix indexing rule adopted in Python (Python is my go-to). However, the computer vision package – opencv endorses the left-handed flavor, which appoints the horizontal axis to be its x-axis.</p>
+<p>There are two flavors for an image coordinate system. Both flavors prefer to set the origin of an image at the <em>top-left</em> corner. The difference is the choice of handedness. The right-handed flavor is equivalent to a <span class="math inline">\(90^\circ\)</span> clockwise rotation of the traditional right-handed Cartesian coordinate system, as sketched in the middle panel of Figure 2. The left-handed flavor is created by exchanging two axes, as illustrated in the rightmost panel of Figure 2. My choice is the right-handed flavor. Because I prefer the first axis to be the x-axis, which is consistent with the matrix indexing rule in Python (Python is my go-to). However, the computer vision package – opencv favors the left-handed flavor, which appoints the horizontal axis to be its x-axis.</p>
 <figure>
 <img src="./figures/figure02-image_coordinates.png" alt="" /><figcaption>Figure 2. Three different representation of a digital image</figcaption>
 </figure>
 <h2 id="caveat-to-use-opencv">Caveat to use opencv</h2>
-<p>If I want to use opencv, I have to convert the image coordinates from the right-handed to the left-handed using the following naive function.</p>
+<p>If I want to use opencv, I have to convert the image coordinates from the right-handed to the left-handed using the following trivial function.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> crd_img2cv(crd):</span>
 <span id="cb1-2"><a href="#cb1-2"></a>    <span class="co">&#39;&#39;&#39; Convert coordinate from image format to opencv format.</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co">    &#39;&#39;&#39;</span></span>
