@@ -264,6 +264,48 @@ of using a pretrained artificial neural network model.</p>
 class="frame">
 <h3>Matching networks for one-shot learning | What’s the model <span
 class="math inline">\(h\)</span>?</h3>
+<ul>
+<li><p>Model <span class="math inline">\(h\)</span> returns a predicted
+label <span class="math inline">\(\hat{\boldsymbol{y}}=
+              h_{}(\hat{\boldsymbol{x}}\mid \mathbb{S}          , f,
+g)\)</span> through a weighted-sum of labels.</p>
+<p><span class="math display">\[h_{}(\hat{\boldsymbol{x}}\mid
+\mathbb{S}          )
+                  \equiv \sum_{i = 1}^{k} a_{}(\hat{\boldsymbol{x}},
+\boldsymbol{x}      _i \mid \mathbb{S}          )
+                                          \cdot
+                                          \boldsymbol{y}      _i\]</span></p>
+<p>where <span class="math inline">\(a_{}(\hat{\boldsymbol{x}},
+\boldsymbol{x}      _i \mid \mathbb{S}          ) \equiv
+              \mathit{softmax}(z)\)</span></p>
+<p>…, <span class="math inline">\(z \equiv \mathit{cosineDist}\left(
+f_{}
+              \left( \hat{\boldsymbol{x}}\mid
+\mathbb{S}          \right), g_{}(\boldsymbol{x}      _i)
+\right)\)</span></p>
+<p>…, <span class="math inline">\(f_{}\left( \hat{\boldsymbol{x}}\mid
+\mathbb{S}          
+              \right)\)</span> is an embedding model to encode a
+<strong>query</strong> example <span
+class="math inline">\(\hat{\boldsymbol{x}}\)</span>.</p>
+<p>…, <span class="math inline">\(g_{}\)</span> is an embedding model to
+encode a <strong>support</strong> example <span
+class="math inline">\(\boldsymbol{x}\)</span>.</p></li>
+<li><p><span class="math inline">\(f_{}\left( \hat{\boldsymbol{x}}\mid
+\mathbb{S}          \right)\)</span> is an attention LSTM (long-short
+term memory) model under the hood.</p>
+<p><span class="math display">\[f_{}(\hat{\boldsymbol{x}}\mid
+\mathbb{S}          )
+                  \equiv \mathit{attLSTM}_{} \left(
+\mathit{pretrainModel}(\hat{\boldsymbol{x}}),
+                                                               g_{}(\mathbb{S}          ),
+                                                               K
+\right)\]</span></p>
+<p>where <span class="math inline">\(K\)</span> is a user specified
+parameter in the LSTM model.</p></li>
+<li><p>…, <span class="math inline">\(g_{} \equiv
+\mathit{biDirectLSTM}\)</span></p></li>
+</ul>
 </section>
 <section id="matching-networks-for-one-shot-learning-training-strategy"
 class="frame">
